@@ -3,7 +3,7 @@
 	if(isset($_POST['github_link']) && isset($_POST['description']) )
 	{
 		// include Database connection file 
-		include("db.php");
+		include("../db.php");
 
 		// get values 
 		$github_link = $_POST['github_link'];

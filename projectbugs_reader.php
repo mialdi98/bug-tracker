@@ -5,7 +5,7 @@ include ('db.php');
        $project_id=(int) $_GET['id'];
        
     } else {
-        header('Location: ../404.php');
+        header('Location: errors/404.php');
     }
 
     $query1 = "SELECT `project_name` FROM `table_of_tasks_project-name` WHERE `id`=".$_GET['id']." ";

@@ -3,7 +3,7 @@
 	if(isset($_POST['project_name']) && isset($_POST['assignet_to']))
 	{
 		// include Database connection file 
-		include("db.php");
+		include("../db.php");
 
 		// get values 
 		$project_name = $_POST['project_name'];
