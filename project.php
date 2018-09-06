@@ -1,3 +1,6 @@
+<?php require ("ajax/authorization.php");
+if(isset( $_POST['logout'])) {if(isset($_SESSION['id'])){unset($_SESSION['id']);header('location:'.'index.php'); exit;}} 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +9,7 @@
 <title>Bug-tracker Project</title>
     <!-- Bootstrap CSS File  -->
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
 </head>
 <body>
 <!--NavBar Start-->
@@ -13,25 +17,28 @@
 <div class="container-fluid">
  <div class="navbar-header">
     <img src="img/favicon.ico" width="40" height="40" alt="">&nbsp</div>
-    <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav ">
       <li><a href="index.php">Home</a></li>
-      <li class="active"><a href="#">Project</a></li>
+      <?php //if user login 
+      if(isset( $_POST['logout'])) {if(isset($_SESSION['id'])){unset($_SESSION['id']);}} 
+      if(isset($_SESSION["id"])) {?>
+      <li class="active"><a href="project.php">Project</a></li>
       <li><a href="profile.php">Profile</a></li>
     </ul>
-    <div class="col-md-3">
-     <form class="navbar-form" action="/search.php" role="search">  
-        <div class="input-group">
-            <input type="text" class="form-control " placeholder="Search bug">
-            <div class="input-group-btn">
-            <button id="btn-search" class="btn btn-default" type="submit">
-                <i class="glyphicon glyphicon-search"></i></button>
-            </div>
-        </div>
-     </form>
-    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+            <form method="POST">
+              <button  type="submit" name="logout" id="logout" style ="outline: 0; outline-offset: 0; margin-top:8px;text-decoration: none;" class="btn btn-link" value="Submit" onclick="logout()"><span class="glyphicon glyphicon-log-in "></span> Logout</button>
+            </form>
+         </li>
+      <?php }else {//if user not login?>
+    </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="reg.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li>
+         <button style ="outline: 0; outline-offset: 0; margin-top:8px;text-decoration: none;" class="btn btn-link" onclick="loginForm()"><span class="glyphicon glyphicon-log-in "></span> Login</button></li>
+          
+      <?php } ?>
     </ul>
 </div>
 </nav>
@@ -128,6 +135,7 @@
     </div>
 </div>
 <!-- // Modal -->
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
