@@ -71,6 +71,7 @@ include ('db.php');
 		}*/
  
 if (!$errFirstName && !$errLastName && !$errRoleOf && !$errUserName && !$errUserPassword && !$errUserPasswordConfirm && !$errEmail) {
+		$user_password=md5($user_password+md5($user_password)); //some type of salf
 	$query = "INSERT INTO reg_table_main(first_name, last_name, roleOf, user_name, user_password, email) VALUES('$first_name', '$last_name', '$roleOf', '$user_name', '$user_password', '$email')";
         if (!$result = mysqli_query($con, $query)) {
         	$result='<div class="alert alert-danger">Sorry there was an error. Please try again later</div>';
