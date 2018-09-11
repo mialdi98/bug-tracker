@@ -22,7 +22,7 @@
 				<td class="text-center col-md-7"><a href="/projectbugs.php?id='.$row['id'].'">'.$row['project_name'].'</a></td>
 				<td class="text-center col-md-2"><a href="/profile.php?username='.$row['assignet_to'].'">'.$row['assignet_to'].'</a></td>
 				<td class="text-center col-md-1">
-					<button onclick="GetProjectDetails('.$row['id'].')" class="btn btn-warning">Update</button>
+					<button onclick="GetProjectDetails('.$row['id'].');" class="btn btn-warning">Update</button>
 				</td>
 				<td class="text-center col-md-1" >
 					<button onclick="DeleteProject('.$row['id'].')" class="btn btn-danger">Delete</button>

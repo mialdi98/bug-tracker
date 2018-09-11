@@ -90,10 +90,10 @@ if(isset( $_POST['logout'])) {if(isset($_SESSION['id'])){unset($_SESSION['id']);
                     <label for="project_name">Project name</label>
                     <input type="text" id="project_name" placeholder="Project Name" class="form-control"/>
                 </div>
-                <?php include("project_reader.php"); ?>
                 <div class="form-group">
-                    <label for="assignet_to">Assignet to you</label>
-                    <input type="text" readonly="readonly" id="assignet_to" value="<?php echo htmlspecialchars($user_name);?>" class="form-control"/>
+                    <label for="assignet_to you">Assignet to</label>
+                    <input type="text" readonly="readonly" id="assignet_to" value="<?php echo htmlspecialchars($_COOKIE['user_name']);?>" class="form-control"/>
+                    <input type="hidden" readonly="readonly" id="member_first" value="<?php echo htmlspecialchars($_COOKIE['user_name']);?>"/>
                 </div>
 
             </div>
@@ -120,16 +120,19 @@ if(isset( $_POST['logout'])) {if(isset($_SESSION['id'])){unset($_SESSION['id']);
                     <label for="update_project_name">Project name</label>
                     <input type="text" id="update_project_name" placeholder="Project name" class="form-control"/>
                 </div>
-
                 <div class="form-group">
                     <label for="update_assignet_to">Assignet to</label>
-                    <input type="text" id="update_assignet_to" placeholder="Assignet to username" class="form-control"/>
+                    <input type="text" id="update_assignet_to" readonly="readonly" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="update_members">Member to add</label>
+                    <input type="text" id="update_members" placeholder="New member username" class="form-control"/>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 <button type="button" class="btn btn-primary" onclick="UpdateProjectDetails()" >Save Changes</button>
-                <input type="hidden" id="hidden_project_id">
+                <input type="hidden" readonly="readonly" id="hidden_project_id"/>
             </div>
         </div>
     </div>

@@ -3,11 +3,13 @@ function addProject() {
     // get values
     var project_name = $("#project_name").val();
     var assignet_to = $("#assignet_to").val();
+    var member_first = $("#member_first").val();
 
     // Add record
     $.post("ajax/addProject.php", {
         project_name: project_name,
-        assignet_to: assignet_to
+        assignet_to: assignet_to,
+        member_first: member_first
     }, function (data, status) {
         // close the popup
         $("#add_new_project_modal").modal("hide");
@@ -61,22 +63,21 @@ function GetProjectDetails(id) {
 
 function UpdateProjectDetails() {
     // get values
-    var project_name = $("#update_project_name").val();
-    var assignet_to = $("#update_assignet_to").val();
-
+    var members = $("#update_members").val();
+     var project_name = $("#update_project_name").val();
     // get hidden field value
     var id = $("#hidden_project_id").val();
 
     // Update the details by requesting to the server using ajax
-    $.post("ajax/updateProjectDetails.php", {
+    $.post("ajax/updateProjectMembersDetails.php", {
         id: id,
-        project_name: project_name,
-        assignet_to: assignet_to
+        project_name,
+        members: members
         },
         function (data, status) {
             // hide modal popup
             $("#update_project_modal").modal("hide");
-            // reload Users by using readRecords();
+            // reload by using readRecords();
             readProject();
         }
     );
