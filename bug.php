@@ -97,7 +97,7 @@ if(isset( $_POST['logout'])) {if(isset($_SESSION['id'])){unset($_SESSION['id']);
                 </div>
                 <div class="form-group">
                     <label for="update_assignet_to">Assignet to</label>
-                    <input type="text" readonly="readonly" id="update_assignet_to" value="<?php echo htmlspecialchars($user_name);?>" class="form-control"/>
+                    <input type="text" id="update_assignet_to" value="<?php echo htmlspecialchars($assignet_to);?>" class="form-control"/>
                 </div>
             </div>
             <div class="modal-footer">

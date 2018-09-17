@@ -106,8 +106,8 @@ if(isset( $_POST['logout'])) {if(isset($_SESSION['id'])){unset($_SESSION['id']);
                     <input type="text" id="status" readonly="readonly" value="open" class="form-control"/>
                 </div>
                 <div class="form-group">
-                    <label for="assignet_to">Assignet to you</label>
-                    <input type="text" readonly="readonly" id="assignet_to" value="<?php echo htmlspecialchars($user_name);?>" class="form-control"/>
+                    <label for="assignet_to">Assignet to</label>
+                    <input type="text" readonly="readonly" id="assignet_to" value="<?php echo htmlspecialchars($assignet_to);?>" class="form-control"/>
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>    
@@ -142,8 +142,8 @@ if(isset( $_POST['logout'])) {if(isset($_SESSION['id'])){unset($_SESSION['id']);
                     <input type="hidden" readonly="readonly" id="update_project_name" value="<?php echo htmlspecialchars($project_id);?>"/>
                 </div>
                 <div class="form-group">
-                    <label for="update_assignet_to">Assignet to you</label>
-                    <input type="text" readonly="readonly" id="update_assignet_to" value="<?php echo htmlspecialchars($user_name);?>" class="form-control"/>
+                    <label for="update_assignet_to">Assignet to</label>
+                    <input type="text" id="update_assignet_to" value="<?php echo htmlspecialchars($assignet_to);?>" class="form-control"/>
                 </div>
                 <div class="form-group"> 
                 <label for="update_status">Status</label>
