@@ -4,11 +4,15 @@ function addProjectbugs() {
     var github_link = $("#github_link").val();
     var assignet_to = $("#assignet_to").val();
     var project_name = $("#project_name").val();
+    //var status = $("#status").val();
+    //value = $("#txt_name").attr('value');
+    var status= document.getElementById('status').value; 
     var description = $("#description").val();
 
     // Add record
     $.post("ajax/addProjectbugs.php", {
         github_link: github_link,
+        status: status,
         assignet_to: assignet_to,
         project_name: project_name,
         description: description
@@ -23,6 +27,7 @@ function addProjectbugs() {
         $("#github_link").val("");
         $("#assignet_to").val("");
         $("#project_name").val("");
+        $("#status").val("");
         $("#description").val("");
     });
 }

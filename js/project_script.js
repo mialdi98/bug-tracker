@@ -1,4 +1,4 @@
-// Add Record
+
 function addProject() {
     // get values
     var project_name = $("#project_name").val();
@@ -18,7 +18,7 @@ function addProject() {
         readProject();
 
         // clear fields from the popup
-         $("#project_name").val("");
+        $("#project_name").val("");
         $("#assignet_to").val("");
     });
 }
@@ -64,14 +64,14 @@ function GetProjectDetails(id) {
 function UpdateProjectDetails() {
     // get values
     var members = $("#update_members").val();
-     var project_name = $("#update_project_name").val();
+    var project_name = $("#update_project_name").val();
     // get hidden field value
     var id = $("#hidden_project_id").val();
 
     // Update the details by requesting to the server using ajax
     $.post("ajax/updateProjectMembersDetails.php", {
         id: id,
-        project_name,
+        project_name: project_name,
         members: members
         },
         function (data, status) {

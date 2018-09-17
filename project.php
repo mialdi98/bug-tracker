@@ -1,4 +1,5 @@
 <?php require ("ajax/authorization.php");
+require_once ("rights.php");
 if(isset( $_POST['logout'])) {if(isset($_SESSION['id'])){unset($_SESSION['id']);header('location:'.'index.php'); exit;}} 
 ?>
 <!DOCTYPE html>
@@ -51,7 +52,7 @@ if(isset( $_POST['logout'])) {if(isset($_SESSION['id'])){unset($_SESSION['id']);
                 <tr>
                     <th class="text-center" colspan="6">Projects list
                         <div class="pull-right">
-                            <button class="btn btn-success" data-toggle="modal" data-target="#add_new_project_modal">Add New Project</button>
+                            <button class="btn btn-success" data-toggle="modal" data-target="#add_new_project_modal" <?php if (action("C")!=true){ echo 'style="display:none;"';}?>>Add New Project</button>
                             </div>
                     </th>
                 </tr> 
@@ -68,12 +69,8 @@ if(isset( $_POST['logout'])) {if(isset($_SESSION['id'])){unset($_SESSION['id']);
                 </td>
             </table>
         <div class="project_content"></div>  
-</div>
-</div>
-</div>
-</div>
-<!-- /Content Section -->
 
+<!-- /Content Section -->
 
 <!-- Bootstrap Modals -->
 <!-- Modal - Add New Project -->
@@ -91,19 +88,20 @@ if(isset( $_POST['logout'])) {if(isset($_SESSION['id'])){unset($_SESSION['id']);
                     <input type="text" id="project_name" placeholder="Project Name" class="form-control"/>
                 </div>
                 <div class="form-group">
-                    <label for="assignet_to you">Assignet to</label>
+                    <label for="assignet_to">Assignet to</label>
                     <input type="text" readonly="readonly" id="assignet_to" value="<?php echo htmlspecialchars($_COOKIE['user_name']);?>" class="form-control"/>
                     <input type="hidden" readonly="readonly" id="member_first" value="<?php echo htmlspecialchars($_COOKIE['user_name']);?>"/>
                 </div>
-
-            </div>
+                
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 <button type="button" class="btn btn-primary" onclick="addProject()">Add Project</button>
             </div>
+            </div>
         </div>
     </div>
 </div>
+
 <!-- // Modal -->
 
 <!-- Modal - Update details -->
@@ -115,7 +113,6 @@ if(isset( $_POST['logout'])) {if(isset($_SESSION['id'])){unset($_SESSION['id']);
                 <h4 class="modal-title" id="myModalLabel">Update</h4>
             </div>
             <div class="modal-body">
-
                 <div class="form-group">
                     <label for="update_project_name">Project name</label>
                     <input type="text" id="update_project_name" placeholder="Project name" class="form-control"/>
