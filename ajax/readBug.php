@@ -1,4 +1,6 @@
 <?php
+require_once ("../rights.php");
+require_once("../isMemberOf.php");
 	// include Database connection file 
 	include("../db.php");
 
@@ -34,21 +36,25 @@
     {
     	while($row = mysqli_fetch_assoc($result))
     	{
+            if(isMemberOf($project_id)==true){
     		$data .= '
-			<tr>
+			<tr';  if (action($row['status'])!=true){ $data.= ' style="display:none;" ';} $data.='>
                             <td class="col-md-1 text-center">'.htmlspecialchars($row['bug_id']).'</td>
                             <td class="col-md-1 text-center"><a href="'.$github_link.'">GIT</a></td>
                             <td class="col-md-5 text-center">'.htmlspecialchars($row['start_time']).'/'.htmlspecialchars($row['end_time']).'</td>
-                            <td class="col-md-1 text-center">'.htmlspecialchars($row['status']).'</td>
-                            <td class="col-md-2 text-center"><a href="#">'.htmlspecialchars($row['assignet_to']).'</a></td>
+                             <td class="col-md-1 text-center"><button class="btn btn-info">'.htmlspecialchars($row['status']).'</button></td>
+                            <td class="col-md-2 text-center"><a href="/profile.php?username='.htmlspecialchars($row['assignet_to']).'">'.htmlspecialchars($row['assignet_to']).'</a></td>
                 <td class="text-center col-md-1">
                     <button onclick="GetBugDetails('.$row['bug_id'].')" class="btn btn-warning">Update</button>
                 </td>
                 <td class="text-center col-md-1" >
-                    <button onclick="DeleteBug('.$row['bug_id'].')" class="btn btn-danger">Delete</button>
+                    <button onclick="DeleteBug('.$row['bug_id'].')" class="btn btn-danger"' ;
+                    if (action("D")!=true) $data.=' style="display:none;" ';
+                    $data.='>Delete</button>
                 </tr>
                 <!--Discription block -->
-                <table class="table table-bordered table-striped table-hover">
+                <table class="table table-bordered table-striped table-hover" ';  
+                if (action($row['status'])!=true){ $data.= ' style="display:none;" ';} $data.='>
                 <thread>
                 <th class="text-center col-md-12">Description &nbsp<button onclick="GetDescriptionDetails('.$row['bug_id'].')" class="btn btn-warning">Edit</button>
                     <tr>
@@ -60,7 +66,8 @@
                 </table>
                 
     		';
-    	}
+    	   }
+        }
     }
 
     else

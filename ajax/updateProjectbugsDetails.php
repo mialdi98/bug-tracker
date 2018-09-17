@@ -9,8 +9,9 @@ if(isset($_POST))
     $id = $_POST['id'];
 	$description = $_POST['description'];
 	$github_link = $_POST['github_link'];
+	$status = $_POST['status'];
     // Updaste User details
-    $query = "UPDATE `table_of_tasks_main` SET description = '$description', github_link = '$github_link' WHERE id = '$id'";
+    $query = "UPDATE `table_of_tasks_main` SET description = '$description', github_link = '$github_link', status='$status' WHERE id = '$id'";
     if (!$result = mysqli_query($con, $query)) {
         exit(mysqli_error($con));
     }

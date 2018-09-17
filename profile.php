@@ -91,19 +91,7 @@ include("profile_reader.php"); ?>
     </li>
   </ul>
 </div>
-      <div class="col-md-7">
-<div class="container">
-  <h2>List of Projects:</h2>
-  <ul class="list-group">
-     <li class="list-group-item">
-      <label class="control-label">First Name</label>  
-      <button type="button" class="btn btn-secondary btn-lg" disabled aria-disabled="true" >
-      <i class="glyphicon glyphicon-list-alt"></i></button> 
-      <?php echo htmlspecialchars($first_name);?>
-    </li>
-  </ul>
-</div>
-</div>
+
 <!--End of colum sctruct-->      
 </div>
 </div>

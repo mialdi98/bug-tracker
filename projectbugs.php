@@ -1,4 +1,5 @@
 <?php require ("ajax/authorization.php");
+require_once ("rights.php");
 if(isset( $_POST['logout'])) {if(isset($_SESSION['id'])){unset($_SESSION['id']);header('location:'.'index.php'); exit;}} 
 ?>
 <!DOCTYPE html>
@@ -52,7 +53,7 @@ if(isset( $_POST['logout'])) {if(isset($_SESSION['id'])){unset($_SESSION['id']);
                 <tr>
                     <th class="text-center" colspan="6">Project [<?php echo $project_name ?>] - Bugs list
                         <div class="pull-right">
-                            <button class="btn btn-success" data-toggle="modal" data-target="#add_new_projectbugs_modal">Add New Bug</button>
+                            <button class="btn btn-success" data-toggle="modal" data-target="#add_new_projectbugs_modal" <?php if (action("C")!=true){ echo 'style="display:none;"';}?> >Add New Bug</button>
                             </div>
                     </th>
                 </tr> 
@@ -101,8 +102,12 @@ if(isset( $_POST['logout'])) {if(isset($_SESSION['id'])){unset($_SESSION['id']);
                     <input type="hidden" readonly="readonly" id="project_name" value="<?php echo htmlspecialchars($project_id);?>"/>
                 </div>
                 <div class="form-group">
-                    <label for="assignet_to">Assignet to you</label>
-                    <input type="text" readonly="readonly" id="assignet_to" value="<?php echo htmlspecialchars($user_name);?>" class="form-control"/>
+                    <label for="status">Status</label>
+                    <input type="text" id="status" readonly="readonly" value="open" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="assignet_to">Assignet to</label>
+                    <input type="text" readonly="readonly" id="assignet_to" value="<?php echo htmlspecialchars($assignet_to);?>" class="form-control"/>
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>    
@@ -137,8 +142,23 @@ if(isset( $_POST['logout'])) {if(isset($_SESSION['id'])){unset($_SESSION['id']);
                     <input type="hidden" readonly="readonly" id="update_project_name" value="<?php echo htmlspecialchars($project_id);?>"/>
                 </div>
                 <div class="form-group">
-                    <label for="update_assignet_to">Assignet to you</label>
-                    <input type="text" readonly="readonly" id="update_assignet_to" value="<?php echo htmlspecialchars($user_name);?>" class="form-control"/>
+                    <label for="update_assignet_to">Assignet to</label>
+                    <input type="text" id="update_assignet_to" value="<?php echo htmlspecialchars($assignet_to);?>" class="form-control"/>
+                </div>
+                <div class="form-group"> 
+                <label for="update_status">Status</label>
+                <div class="selectContainer">
+                    <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                    <select name="update_status" id="update_status" class="form-control selectpicker">
+                        <option disabled>Select Status</option>
+                        <?php if (action("open")==true) { echo'<option value="open">open</option>'; } ?>
+                        <?php if (action("in work")==true) { echo'<option value="in test">in test</option>'; } ?>
+                        <?php if (action("in test")==true) { echo'<option value="in work">in work</option>'; } ?>
+                        <?php if (action("closed")==true) { echo'<option value="closed">closed</option>';} ?>                  
+                    </select>
+                    </div>
+                </div>
                 </div>
                 <div class="form-group">
                     <label for="update_description">Description</label>    
@@ -148,7 +168,7 @@ if(isset( $_POST['logout'])) {if(isset($_SESSION['id'])){unset($_SESSION['id']);
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 <button type="button" class="btn btn-primary" onclick="UpdateProjectbugsDetails()" >Save Changes</button>
-                <input type="hidden" id="hidden_projectbugs_id">
+                <input type="hidden" readonly="readonly" id="hidden_projectbugs_id"/>
             </div>
         </div>
     </div>
