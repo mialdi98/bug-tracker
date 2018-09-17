@@ -12,57 +12,71 @@ include ('db.php');
 
 		//first name
 		if (!$_POST['first_name']) {
-			$errFirstName = 'Please enter your First name';
-		} elseif(!preg_match("#^[aA-zZ]+$#",$_POST['first_name'])){
-			$errFirstName = 'Do not use any special characters!';
+			$errFirstName.= 'Please enter your First name<br>';
+		}
+		if(!preg_match("#^[aA-zZ]+$#",$_POST['first_name'])){
+			$errFirstName.= 'Do not use any special characters!<br>';
 		}
 		if (!$_POST['last_name']) {
-			$errLastName = 'Please enter your Last name';
-		}elseif(!preg_match("#^[aA-zZ]+$#",$_POST['last_name'])){
-			$errLastName = 'Do not use any special characters!';
+			$errLastName.= 'Please enter your Last name<br>';
+		}
+		if(!preg_match("#^[aA-zZ]+$#",$_POST['last_name'])){
+			$errLastName.= 'Do not use any special characters!<br>';
 		}
 		//role 
 		if (!$_POST['roleOf']) {
-			$errRoleOf = 'Please enter your Role';
+			$errRoleOf.= 'Please enter your Role<br>';
 		}
 		//user name
+		$options = array(
+    		'options' => array(
+        	'min_range' => 6,
+        	'max_range' => 16
+    		)
+		);
 		$queryCheckUserName = mysqli_query($con, "SELECT COUNT(id) FROM reg_table_main WHERE user_name='".$_POST['user_name']."'");
 		if (!$_POST['user_name']) {
-			$errUserName = 'Please enter your Username';
-		}elseif(mysqli_num_rows($queryCheckUserName) == 0){
-			$errUserName = 'This Username already used';
-		}elseif (strlen($_POST['user_name'])<6 
-			&& strlen($_POST['user_name'])>16){
-			$errUserName = 'Please change length of your Username';
-		}elseif(!preg_match("#^[aA-zZ0-9\-_]+$#",$_POST['user_name'])){
-			$errUserName = 'Do not use special characters!\nOnly \'_\'and \'-\'Are all allowed';
+			$errUserName.= 'Please enter your Username<br>';
+		}
+		if(mysqli_num_rows($queryCheckUserName) == 0){
+			$errUserName.= 'This Username already used<br>';
+		}
+		if (!filter_var(strlen($_POST['user_name']), FILTER_VALIDATE_INT,$options)){
+			$errUserName.= 'Please change length of your Username<br>';
+		}
+		if(!preg_match("#^[aA-zZ0-9\-_]+$#",$_POST['user_name'])){
+			$errUserName.= 'Do not use special characters!<br>Only \'_\'and \'-\'Are all allowed<br>';
 		}
 		//password
 		if (!$_POST['user_password']) {
-			$errUserPassword = 'Please enter your password';
-		} elseif(strlen($_POST['user_password'])<5 
-			&& strlen($_POST['user_password'])>16){
-			$errUserPassword = 'Password is too short or too long';
-		}elseif(!preg_match("#^[aA-zZ0-9\-_]+$#",$_POST['user_password'])){
-			$errUserPassword = 'Do not use special characters!\nOnly \'_\'and \'-\'Are all allowed';
+			$errUserPassword.= 'Please enter your password<br>';
+		}
+		if(!filter_var(strlen($_POST['user_password']), FILTER_VALIDATE_INT,$options)){
+			$errUserPassword.= 'Password is too short or too long<br>';
+		}
+		if(!preg_match("#^[aA-zZ0-9\-_]+$#",$_POST['user_password'])){
+			$errUserPassword.= 'Do not use special characters!<br>Only \'_\'and \'-\'Are all allowed<br>';
 		}
 		//confirm password
 		if (!$_POST['confirm_password']) {
-			$errUserPasswordConfirm = 'Please confirm your password';
-		} elseif(strlen($_POST['confirm_password'])<5 
-			&& strlen($_POST['confirm_password'])>16){
-			$errUserPasswordConfirm = 'Password is too short or too long';
-		}elseif($_POST['user_password'] !== $_POST['confirm_password']){
-			$errUserPasswordConfirm = 'Passwords do not match';
-		}elseif(!preg_match("#^[aA-zZ0-9\-_]+$#",$_POST['confirm_password'])){
-			$errUserPasswordConfirm = 'Do not use special characters!\nOnly \'_\'and \'-\'Are all allowed';
+			$errUserPasswordConfirm.= 'Please confirm your password<br>';
+		}
+		if(!filter_var(strlen($_POST['confirm_password']), FILTER_VALIDATE_INT,$options)){
+			$errUserPasswordConfirm.= 'Password is too short or too long<br>';
+		}
+		if($_POST['user_password'] !== $_POST['confirm_password']){
+			$errUserPasswordConfirm.= 'Passwords do not match<br>';
+		}
+		if(!preg_match("#^[aA-zZ0-9\-_]+$#",$_POST['confirm_password'])){
+			$errUserPasswordConfirm.= 'Do not use special characters!<br>Only \'_\'and \'-\'Are all allowed<br>';
 		}
 		//email
 		$queryCheckEmail = mysqli_query($con,"SELECT COUNT(id) FROM reg_table_main WHERE email='".$_POST['email']."'");
 		if (!$_POST['email'] || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-			$errEmail = 'Please enter a valid email address';
-		}elseif(mysqli_num_rows($queryCheckEmail) == 0){
-			$errEmail = 'This email address is already used';
+			$errEmail.= 'Please enter a valid email address<br>';
+		}
+		if(mysqli_num_rows($queryCheckEmail) == 0){
+			$errEmail.= 'This email address is already used<br>';
 		}
 		
 		/*//Check if simple anti-bot test is correct
