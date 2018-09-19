@@ -8,7 +8,7 @@ if(isset( $_POST['logout'])) {if(isset($_SESSION['id'])){unset($_SESSION['id']);
 <link href="img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 <title>Bug-tracker Project bug</title>
     <!-- Bootstrap CSS File  -->
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <style type="text/css">
 .centered-modal.in {
     display: flex !important;
@@ -88,8 +88,8 @@ if(isset( $_POST['logout'])) {if(isset($_SESSION['id'])){unset($_SESSION['id']);
 <!-- Custom JS file -->
 <script type="text/javascript" src="../js/login_script.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 
 </body>
 </html>

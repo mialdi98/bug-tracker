@@ -3,7 +3,7 @@
 <meta charset="utf-8" />
 
 <link href="img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <link href="style.css" rel="stylesheet">
 
 <!--<div align="center" style="text-align: center;">
@@ -136,8 +136,7 @@
     </div><!-- /.container -->
 </div>
 <!--<script src="reg.js"></script>-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>
