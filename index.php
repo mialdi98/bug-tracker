@@ -57,8 +57,8 @@
   <h1 class="display-4">Hello, dear IT worker!</h1>
   <p class="lead">This is a simple free bug tracker, for your use!</p>
   <hr class="my-4">
-  <p>If you have some trouble with understanding , you always can :</p>
-  <a class="btn btn-success btn-lg" href="more.php" role="button">Learn more</a>
+  <p>If you have some trouble with understanding, you always can:</p>
+  <a class="btn btn-success btn-lg" href="more.php" role="button">Learn more.</a>
 </div>
 
 </div>

@@ -1,12 +1,25 @@
 <?php
 include ('db.php');
 if (isset($_GET['user_name'])) {
-       $user_name=$_GET['username'];
-       
+       $user_name=$_GET['user_name'];
+       $query = "
+    SELECT 
+        * 
+    FROM 
+        `reg_table_main`
+    WHERE
+        `user_name` = '$user_name' 
+    ";
+    $result = mysqli_query($con, $query);
+    if(mysqli_num_rows($result) == 0){
+        $query=null;
+        $result=null;
+        header('Location: errors/404.php');
+    }
+    $query=null;
+    $result=null;
     }elseif(parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY)==null){
         $user_name=$_COOKIE['user_name'];
-    }else {
-        header('Location: errors/404.php');
     }
 
 	$query = "

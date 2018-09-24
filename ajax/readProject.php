@@ -24,7 +24,7 @@ require_once("../isMemberOf.php");
 			<tr>
 				<td class="text-center col-md-1"><a href="/projectbugs.php?id='.$row['id'].'">'.$row['id'].'</a></td>
 				<td class="text-center col-md-7"><a href="/projectbugs.php?id='.$row['id'].'">'.$row['project_name'].'</a></td>
-				<td class="text-center col-md-2"><a href="/profile.php?username='.$row['assignet_to'].'">'.$row['assignet_to'].'</a></td>
+				<td class="text-center col-md-2"><a href="/profile.php?user_name='.$row['assignet_to'].'">'.$row['assignet_to'].'</a></td>
                   
                 <td class="text-center col-md-1">
 					<button  onclick="GetProjectDetails('.$row['id'].')" class="btn btn-warning"' ;
