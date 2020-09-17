@@ -1,5 +1,5 @@
 <?php
-include ('db.php');
+include ('./db.php');
     
     if (isset($_GET['id']) && isset($_GET['bug_id'])) {
        $project_id=(int) $_GET['id'];

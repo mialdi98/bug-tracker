@@ -3,7 +3,7 @@
 if(isset($_POST['id']) && isset($_POST['id']) != "")
 {
     // include Database connection file
-    include("../db.php");
+    include("./db.php");
  
     // get user id
     $project_id = $_POST['id'];

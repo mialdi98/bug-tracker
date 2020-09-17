@@ -1,5 +1,5 @@
 <?php
-include ('db.php');
+include ('./db.php');
 	if (isset($_POST["submit"])) {
 		$first_name = $_POST['first_name'];
 		$last_name = $_POST['last_name'];

@@ -15,7 +15,7 @@ if(isset($_POST["login"]))
  {
  	$password = md5($_POST["user_password"]+md5($_POST["user_password"])); //some type of salf
 	// include Database connection file 
-	include("/../db.php");
+	include("./db.php");
 
 	$query = "
 	SELECT 

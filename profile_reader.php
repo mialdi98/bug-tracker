@@ -1,5 +1,5 @@
 <?php
-include ('db.php');
+include ('./db.php');
 if (isset($_GET['user_name'])) {
        $user_name=$_GET['user_name'];
        $query = "

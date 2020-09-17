@@ -3,7 +3,7 @@ function isMemberOf($project_id){
 if(isset($_COOKIE['user_name']) && !empty($project_id))
 {
     // include Database connection file
-  include("db.php");  
+  include("./db.php");  
     // get values
     $user_name = $_COOKIE['user_name'];
     $query = "

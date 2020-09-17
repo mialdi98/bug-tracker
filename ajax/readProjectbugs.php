@@ -2,7 +2,7 @@
 require_once ("../rights.php");
 require_once("../isMemberOf.php");
 	// include Database connection file 
-	include("../db.php");
+	include("./db.php");
 
 	// Design initial table header 
 	$data = '  <table class="table table-bordered table-hover">';

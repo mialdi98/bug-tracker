@@ -32,7 +32,7 @@ function rights($RightsID,$Action){ //function take ID of needed content to show
 if(isset($_COOKIE['user_name']) && !empty($Action))
 {
     // include Database connection file
-  include("db.php");  
+  include("./db.php");
     // get values
     $user_name = $_COOKIE['user_name'];
     $query = "
